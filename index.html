@@ -43,16 +43,54 @@
 console.log(typeof data)
 
 //object = instence of the class /Real world entity
- products = {
-    title : "laptop",
-    config:"Windows 11",
-    prize:"85000",
-    color:"silver"
+//  products = {
+//     title : "laptop",
+//     config:"Windows 11",
+//     prize:"85000",
+//     color:"silver"
+//  }
+//  console.log(products)
+//  console.log(typeof products) 
+// array --index -- start from 0 
+   sales = [23000,12344,21415,21462,42736]
+console.log(sales[2])
+console.log(sales.length)
+//spread ad rest operator ...
+console.log(...sales)
+console.log(sales.slice(-1))
+// a = [23,34,53]
+// sum = a.map(data => data *2)
+// console.log(sum)
+// discount = sales.map( a => a * 0.70)
+// // total = sales -discount
+// console.log(discount)
+//Conditional Statements
+//if 
+//  a = prompt("Enter the value value")
+//  if(a % 2 ==0){
+//     console.log("Entered value is even ")
+//  }
+//if-else:
+//template literal - `${}`
+//logical &&, || 
+ category = prompt("Enter the category ")
+ if(category == "human"){
+    document.write(`YOU ARE THE ${category}.WELCOME TO THE DASHBOARD AND UTILISE THE FEATURES`)
  }
- console.log(products)
- console.log(typeof products)
+ else {
+    document.write(`You entered the value is ${category} are not a human,You are unable to access`)
+ }
+ //task ---> if the person is entered into a dashboard, he/she shoud be enter the value as  "human",
+ // otherwise the website is display the response you are not able to access
+
+
+ //If the user is entered password and confirm password if both conditions are match,
+ // automatically the response in the UI Comes with you are loggin in and otherwise ,
+ // try- again statement will appear
     </script>
 </head>
+
+
 <body>
         <script>
         
