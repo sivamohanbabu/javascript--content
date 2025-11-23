@@ -4,107 +4,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript</title>
-    <script>
-//         document.write("Hello World");
-//         console.log("Hello World");
-//         //Variables in Javascript
-//         //  alert("Hello World");
-//          //Global varialble
-//          var a = 85
-//          var a = 50
-//          console.log("A value is ",a)
-//          /*  
-//          //local variable
-//          */
-//         let b =40
-//       const c = 50
-//         console.log("B value is",b)
-//         console.log("C value is",c)
-//         //Data Types in Javascript
-//         // 1.primitive data types - to store the single value
-//         // ex:   //Number,String,Boolean,null,undefined
-//         // 2.non-primitive data types - to store multiple values
-// //ex:  //Arrays,Objects
-     
-//         //to check the type of the data - typeof()
-//         name = "hello"
-//         console.log(typeof name)
-//         objecta = null
-//         console.log(typeof objecta)
-
-//         //hoisting: to declare the code at the top
-        // console.log(fullname)
-        // fullname = "hello welcome to the javascript"
-
-        //Non- Primitive :
-        //array,object
-//array = to stire the values which is in sequence and collection of primitive data types
-        data = [1,"one",23,null,true]
-console.log(typeof data)
-
-//object = instence of the class /Real world entity
-//  products = {
-//     title : "laptop",
-//     config:"Windows 11",
-//     prize:"85000",
-//     color:"silver"
-//  }
-//  console.log(products)
-//  console.log(typeof products) 
-// array --index -- start from 0 
-//    sales = [23000,12344,21415,21462,42736]
-// console.log(sales[2])
-// console.log(sales.length)
-// //spread ad rest operator ...
-// console.log(...sales)
-// console.log(sales.slice(-1))
-// a = [23,34,53]
-// sum = a.map(data => data *2)
-// console.log(sum)
-// discount = sales.map( a => a * 0.70)
-// // total = sales -discount
-// console.log(discount)
-//Conditional Statements
-//if 
-//  a = prompt("Enter the value value")
-//  if(a % 2 ==0){
-//     console.log("Entered value is even ")
-//  }
-//if-else:
-//template literal - `${}`
-//logical &&, || 
-//  category = prompt("Enter the category ")
-//  if(category == "human"){
-//     document.write(`YOU ARE THE ${category}.WELCOME TO THE DASHBOARD AND UTILISE THE FEATURES`)
-//  }
-//  else {
-//     document.write(`You entered the value is ${category} are not a human,You are unable to access`)
-//  }
- //task ---> if the person is entered into a dashboard, he/she shoud be enter the value as  "human",
- // otherwise the website is display the response you are not able to access
-
-
- //If the user is entered password and confirm password if both conditions are match,
- // automatically the response in the UI Comes with you are loggin in and otherwise ,
- // try- again statement will appear
-
- //looping statements
-// a = prompt("Enter the value below 10")
-//  while(a<=10){
-//     document.write(`<br>${a}</br>`)
-//     a++
-//  }
-// a = prompt("Enter the value below 20")
-//  for(i=a;i<20;i++){
-// document.write(`<br>${i}</br>`)
-//  }
+    <!-- <script>
+function demo(){
+    document.getElementById("text").innerHTML = "Hello Siva!"
+}
     </script>
-</head>
-
 
 <body>
-        <script>
-        
-    </script>
+    <p id="text">Hello World</p>
+<button onclick="demo()">User Click</button> -->
+<style>
+    /* Responsive base sizing */
+    html{font-size:clamp(13px,1.6vw,18px);-webkit-text-size-adjust:100%}
+
+    /* Constrain content on large screens and center it */
+    body#body{
+        max-width:1200px;
+        margin-inline:auto;
+        padding-inline:clamp(12px,4vw,48px);
+        grid-auto-rows:min-content;
+    }
+
+    /* Make buttons fluid and fill their grid cells */
+    body#body button{
+        min-width:80px;
+        width:100%;
+        justify-self:stretch;
+        white-space:nowrap;
+    }
+
+    /* Ensure counter scales smoothly across viewports */
+    #count{
+        font-size:clamp(2rem,9.5vw,5rem);
+        padding-inline:clamp(12px,4vw,28px);
+        word-break:keep-all;
+    }
+
+    /* Large desktops: more columns, larger gaps */
+    @media (min-width:1200px){
+        body#body{ grid-template-columns: repeat(6, minmax(120px,1fr)); gap:24px; }
+        #count{ grid-column:1 / -1; }
+    }
+
+    /* Medium screens */
+    @media (min-width:720px) and (max-width:1199px){
+        body#body{ grid-template-columns: repeat(4, minmax(110px,1fr)); gap:18px; }
+    }
+
+    /* Small screens: tighter layout */
+    @media (max-width:520px){
+        body#body{ grid-template-columns: repeat(2, minmax(90px,1fr)); gap:12px; padding:18px; }
+        button{ padding:10px 12px; font-size:.95rem; min-width:72px }
+        #count{ font-size:clamp(1.8rem,12vw,3.75rem); padding:10px }
+    }
+
+    /* Very small phones */
+    @media (max-width:380px){
+        button{ padding:8px 10px; font-size:.9rem; min-width:64px }
+        #count{ font-size:clamp(1.6rem,14vw,3rem) }
+    }
+
+    /* Respect user motion preferences */
+    @media (prefers-reduced-motion: reduce){
+        *{ transition:none!important; animation:none!important; scroll-behavior:auto!important; }
+    }
+
+    /* High-contrast support */
+    @media (prefers-contrast: more){
+        button{ box-shadow:none; border:1px solid rgba(255,255,255,0.08) }
+    }
+    /* Reset & base */
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+        --bg1:#0f1724;
+        --bg2:#0b3a53;
+        --accent:#ffd166;
+        --muted:rgba(255,255,255,0.08);
+        --glass:rgba(255,255,255,0.06);
+        --text:#eef2f7;
+        --radius:12px;
+    }
+
+    /* Page layout */
+    html,body{height:100%}
+    body{
+        min-height:100vh;
+        font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+        color:var(--text);
+        background: linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 60%);
+        display:grid;
+        /* make a header row for the counter and a responsive row of buttons below */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        justify-items:center;
+        align-items:center;
+        gap:18px;
+        padding:48px 24px;
+        transition: background-color .25s ease, color .25s ease;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Ensure the counter sits above the buttons and spans the available width */
+    #count{
+        grid-column: 1 / -1;
+        font-weight:800;
+        font-size:clamp(2.5rem, 10vw, 5rem);
+        letter-spacing:.02em;
+        padding:18px 28px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+        border-radius:calc(var(--radius) + 6px);
+        box-shadow: 0 10px 30px rgba(2,6,23,0.5), inset 0 -2px 6px rgba(255,255,255,0.02);
+        min-width:160px;
+        text-align:center;
+        transition: transform .18s ease, background .18s ease;
+    }
+
+    /* Buttons layout & style (each button becomes a grid item) */
+    button{
+        appearance:none;
+        -webkit-appearance:none;
+        border: none;
+        cursor: pointer;
+        padding:12px 20px;
+        min-width:120px;
+        border-radius:10px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+        color:inherit;
+        font-weight:600;
+        font-size:1rem;
+        box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+        backdrop-filter: blur(6px);
+        transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:8px;
+    }
+
+    /* Emphasize increment/decrement symbols */
+    button:nth-of-type(1){ font-size:1.25rem; padding:14px 22px } /* + */
+    button:nth-of-type(2){ font-size:1.25rem; padding:14px 22px } /* - */
+
+    /* Hover & active */
+    button:hover{
+        transform: translateY(-4px);
+        box-shadow: 0 14px 30px rgba(2,6,23,0.5);
+        background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+    }
+    button:active{ transform: translateY(-1px) scale(.995) }
+
+    /* Focus accessibility */
+    button:focus{ outline:3px solid rgba(255,209,102,0.18); outline-offset:4px }
+
+    /* Accent variations */
+    button[onclick*="increment5"], button[onclick*="increment()"]{
+        background: linear-gradient(90deg, rgba(255,209,102,0.15), rgba(255,209,102,0.06));
+        color:#08121a;
+        font-weight:700;
+    }
+    button[onclick*="decrement5"], button[onclick*="decrement()"]{
+        background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    }
+
+    /* Reset styling - subtle */
+    button[onclick*="reset()"]{
+        background: var(--glass);
+        color:var(--text);
+        font-weight:700;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:520px){
+        body{ padding:28px 18px; gap:12px; grid-template-columns: repeat(2, minmax(110px,1fr)); }
+        #count{ font-size:clamp(2rem, 12vw, 3.75rem) }
+        button{ min-width:100px; padding:10px 12px; font-size:.95rem }
+    }
+</style>
+<script>
+    let count = 0
+    function increment(){
+count = count +1
+document.getElementById("count").innerHTML = count
+document.getElementById("body").style.backgroundColor = "white"
+document.getElementById("body").style.color = "black"
+    }
+    function decrement(){
+count = count -1
+document.getElementById("count").innerHTML = count
+document.getElementById("body").style.backgroundColor = "black"
+document.getElementById("body").style.color = "white"
+    }
+    //es6 function
+     increment5 =()=>{
+count = count +5
+document.getElementById("count").innerHTML = count
+    }
+         decrement5 =()=>{
+count = count -5
+document.getElementById("count").innerHTML = count
+    }
+    reset = ()=>{
+        document.getElementById("count").innerHTML = 0
+    }
+</script>
+</head>
+<body id="body">
+    <p id="count">0</p>
+<button onclick="increment()">
+ + 
+</button>
+<button onclick="decrement()">
+ -
+</button>
+<button onclick=increment5()>increment 5</button>
+<button onclick=decrement5()>decrement 5</button>
+<button onclick=reset()>Reset</button>
 </body>
+
+
+
 </html>
