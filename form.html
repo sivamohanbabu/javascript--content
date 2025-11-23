@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myform">
+        <h1>Calculating the values by user inputs</h1>
+        <div>
+            <input type="text" placeholder="Enter the value 1" id="value1"/>
+
+        </div>
+        <br>
+        <div style="padding-top: 10px;">
+            <input type="text" placeholder="Enter the value 2" id="value2"/>
+        </div>
+        <div style="padding-top: 20px;"><br><br>
+            <input type="submit" value="Get Sum"/>
+        </div>
+    </form>
+    The sum of the value1 and value2 is 
+    <p id="getdata"></p>
+    <script>
+     var formData = document.getElementById("myform")
+     formData.addEventListener("submit", function(event){
+        event.preventDefault()
+    var a = Number(document.getElementById("value1").value)  
+    var b = Number(document.getElementById("value2").value)
+    var sum = a+b
+    document.getElementById("getdata").innerHTML = sum
+     console.log("total result of the value1 and value2 is ",sum)
+     })
+    </script>
+
+</body>
+</html>

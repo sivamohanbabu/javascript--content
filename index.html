@@ -181,8 +181,83 @@ function demo(){
     }
 </style>
 <script>
-    let count = 0
-    function increment(){
+let count = 0;
+
+// Stopwatch for 15 minutes (900 seconds)
+const STOPWATCH_DURATION = 15 * 60; // seconds
+let remaining = STOPWATCH_DURATION;
+let stopwatchInterval = null;
+let stopwatchRunning = false;
+
+function formatTime(s){
+    const mm = String(Math.floor(s / 60)).padStart(2, '0');
+    const ss = String(s % 60).padStart(2, '0');
+    return mm + ':' + ss;
+}
+
+function updateStopwatchDisplay(){
+    const el = document.getElementById('count');
+    if(el) el.textContent = formatTime(remaining);
+}
+
+// Start the stopwatch
+function startStopwatch(){
+    if(stopwatchRunning) return;
+    stopwatchRunning = true;
+    stopwatchInterval = setInterval(()=>{
+        if(remaining > 0){
+            remaining--;
+            updateStopwatchDisplay();
+            if(remaining === 0){
+                pauseStopwatch();
+                // visual indication when finished
+                const b = document.getElementById('body');
+                if(b) b.style.boxShadow = 'inset 0 0 0 2000px rgba(230,57,70,0.08)';
+            }
+        } else {
+            pauseStopwatch();
+        }
+    }, 1000);
+}
+
+// Pause the stopwatch
+function pauseStopwatch(){
+    stopwatchRunning = false;
+    if(stopwatchInterval){
+        clearInterval(stopwatchInterval);
+        stopwatchInterval = null;
+    }
+}
+
+// Reset to full 15 minutes
+function resetStopwatch(){
+    pauseStopwatch();
+    remaining = STOPWATCH_DURATION;
+    updateStopwatchDisplay();
+    const b = document.getElementById('body');
+    if(b) b.style.boxShadow = '';
+}
+
+// Provide simple UI hooks: single click on the big count toggles start/pause, double click resets
+document.addEventListener('DOMContentLoaded', ()=>{
+    const countEl = document.getElementById('count');
+    if(countEl){
+        // show initial time
+        updateStopwatchDisplay();
+        countEl.style.cursor = 'pointer';
+        countEl.title = 'Click to Start/Pause • Double-click to Reset (15:00)';
+
+        countEl.addEventListener('click', ()=>{
+            if(!stopwatchRunning) startStopwatch(); else pauseStopwatch();
+        });
+
+        countEl.addEventListener('dblclick', ()=>{
+            resetStopwatch();
+        });
+    }
+});
+
+function increment(){
 count = count +1
 document.getElementById("count").innerHTML = count
 document.getElementById("body").style.backgroundColor = "white"
@@ -208,7 +283,10 @@ document.getElementById("count").innerHTML = count
     }
 </script>
 </head>
+
 <body id="body">
+    <button onclick="startStopwatch()">Start Stopwatch</button>
+    <button onclick="pauseStopwatch()">Stop Stopwatch</button>
     <p id="count">0</p>
 <button onclick="increment()">
  + 
